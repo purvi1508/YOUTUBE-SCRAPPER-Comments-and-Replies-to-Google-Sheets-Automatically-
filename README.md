@@ -4,15 +4,13 @@ Copy the video id and add in google sheet, Go to extension-> AppScript->paste th
 
 
 
-
+{
 function scrapeCommentsWithReplies(){
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var result=[['Name','Comment','Time','Likes','Reply Count','Reply Author','Reply','Published','Updated']];
   var vid = ss.getSheets()[0].getRange(1,1).getValue();
   var nextPageToken=undefined;
-  
   while(1){
-   
       var data = YouTube.CommentThreads.list('snippet', {videoId: vid, maxResults: 100, pageToken: nextPageToken})
       nextPageToken=data.nextPageToken
       for (var row=0; row<data.items.length; row++) {
@@ -44,8 +42,8 @@ function scrapeCommentsWithReplies(){
       break;
     }
 }
-
 var newSheet=ss.insertSheet(ss.getNumSheets())
 newSheet.getRange(1, 1,result.length,9).setValues(result)
 
+}
 }
