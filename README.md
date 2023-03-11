@@ -4,7 +4,7 @@ Copy the video id and add in google sheet, Go to extension-> AppScript->paste th
 
 
 
-{
+
 function scrapeCommentsWithReplies(){
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var result=[['Name','Comment','Time','Likes','Reply Count','Reply Author','Reply','Published','Updated']];
@@ -45,5 +45,4 @@ function scrapeCommentsWithReplies(){
 var newSheet=ss.insertSheet(ss.getNumSheets())
 newSheet.getRange(1, 1,result.length,9).setValues(result)
 
-}
 }
